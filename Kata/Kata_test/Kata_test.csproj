@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Bandnamegenerator_test.cs" />
     <Compile Include="DeadAnts_test.cs" />
     <Compile Include="StringAverage_test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
