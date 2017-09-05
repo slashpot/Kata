@@ -10,10 +10,10 @@ namespace Kata
     {
         public static string BandNameGenerator(string str) 
         {
-            if (str[0] == str[str.Length - 1])
+            if (str[0] == str[str.Length - 1])  
                 return ToTitleCase(str + str.Substring(1));
-            else
-                return "The " + ToTitleCase(str);
+          
+            return "The " + ToTitleCase(str);
         }
 
         private static string ToTitleCase(string str)

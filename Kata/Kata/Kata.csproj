@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bandnamegenerator.cs" />
+    <Compile Include="CountingDuplicates.cs" />
     <Compile Include="DeadAnts.cs" />
     <Compile Include="StringAverage.cs" />
   </ItemGroup>
