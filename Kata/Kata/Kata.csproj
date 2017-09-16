@@ -40,6 +40,7 @@
     <Compile Include="CountingDuplicates.cs" />
     <Compile Include="DeadAnts.cs" />
     <Compile Include="StringAverage.cs" />
+    <Compile Include="ThreeSum.cs" />
     <Compile Include="TwoSum.cs" />
   </ItemGroup>
   <ItemGroup>
