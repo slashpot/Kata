@@ -39,6 +39,7 @@
     <Compile Include="Bandnamegenerator.cs" />
     <Compile Include="CountingDuplicates.cs" />
     <Compile Include="DeadAnts.cs" />
+    <Compile Include="NextBiggerNumberWithTheSameDigits.cs" />
     <Compile Include="StringAverage.cs" />
     <Compile Include="ThreeSum.cs" />
     <Compile Include="TwoSum.cs" />
