@@ -28,7 +28,6 @@ namespace Kata
             foreach (string word in _words)
             {
                 var current = GetNumber(word);
-
                 if (current != -1)
                     sum += current;
                 else
