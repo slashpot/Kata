@@ -1,42 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kata
 {
     public class StringAverage
     {
-        enum Table { zero, one, two, three, four, five, six, seven, eight, nine };
+        private string[] _words;
+        private int _sum;
+        private enum WordTable
+        { zero, one, two, three, four, five, six, seven, eight, nine };
 
-        static void Main(string[] args)
+        public string AverageString(string input)
         {
+            _words = GetSplitWords(input);
+            _sum = GetSumOfWords();
+            return GetWordBySum();
         }
 
-        public static string AverageString(string input)
+        private string GetWordBySum()
         {
-            string[] words = input.Split(' ');
-            int sum = 0;
+            return _sum != -1 ? Enum.GetName(typeof(WordTable), (_sum / _words.Length)) : "n/a";
+        }
 
-            for (int i = 0; i < words.Length; i++)
+        private int GetSumOfWords()
+        {
+            var sum = 0;
+
+            foreach (string word in _words)
             {
-                int current = getNumber(words[i]);
+                var current = GetNumber(word);
 
                 if (current != -1)
                     sum += current;
                 else
-                    return "n/a";
+                    return -1;
             }
-
-            return Enum.GetName(typeof(Table), (sum / words.Length));
+            return sum;
         }
 
-        private static int getNumber(string input)
+        private static string[] GetSplitWords(string input)
         {
-            Table table;
+            return input.Split(' ');
+        }
 
-            if (Enum.TryParse(input, out table))
+        private static int GetNumber(string input)
+        {
+            if (Enum.TryParse(input, out WordTable table))
                 return (int)table;
 
             return -1;

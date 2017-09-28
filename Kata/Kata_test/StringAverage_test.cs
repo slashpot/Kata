@@ -1,28 +1,38 @@
-﻿using System;
-using Kata;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Kata;
+using NUnit.Framework;
 
 namespace Kata_test
 {
-    [TestClass]
+    [TestFixture]
     public class StringAverage_test
     {
-        [TestMethod]
-        public void TestStringAverageCases()
+        [TestCase("four", "zero nine five two")]
+        [TestCase("three", "four six two three")]
+        [TestCase("three", "one two three four five")]
+        [TestCase("four", "five four")]
+        [TestCase("zero", "zero zero zero zero zero")]
+        [TestCase("two", "one one eight one")]
+        public void TestNormalCases(string expect, string input)
         {
-            TestMethod("four", "zero nine five two");
-            TestMethod("three", "four six two three");
-            TestMethod("three", "one two three four five");
-            TestMethod("four", "five four");
-            TestMethod("zero", "zero zero zero zero zero");
-            TestMethod("two", "one one eight one");
-            TestMethod("n/a", "");
-            TestMethod("n/a", "one vpmibk two seven seven");
+            TestAverageString(expect, input);
         }
 
-        private void TestMethod(string expect, string input)
+        [TestCase("n/a", "one vpmibk two seven seven")]
+        public void TestNonSenseInput(string expect, string input)
         {
-            var actual = StringAverage.AverageString(input);
+            TestAverageString(expect, input);
+        }
+
+
+        [TestCase("n/a", "")]
+        public void TestEmptyInput(string expect, string input)
+        {
+            TestAverageString(expect, input);
+        }
+        private static void TestAverageString(string expect, string input)
+        {
+            var stringAverage = new StringAverage();
+            var actual = stringAverage.AverageString(input);
             Assert.AreEqual(expect, actual);
         }
     }
