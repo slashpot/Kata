@@ -5,20 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Kata;
+using NUnit.Framework;
+using NUnit.Framework.Internal;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace Kata_test
 {
-    [TestClass]
+    [TestFixture]
     public class Bandnamegenerator_test
     {
-        [TestMethod]
-        public void BandNameGeneratorCases()
+        [TestCase("The Knife", "knife")]
+        [TestCase("Tartart", "tart")]
+        [TestCase("Sandlesandles", "sandles")]
+        [TestCase("The Bed", "bed")]
+        [TestCase("The Brother-in-law", "brother-in-law")]
+        public void BandNameGeneratorCases(string expected, string input)
         {
-            Assert.AreEqual("The Knife", Bandnamegenerator.BandNameGenerator("knife"));
-            Assert.AreEqual("Tartart", Bandnamegenerator.BandNameGenerator("tart"));
-            Assert.AreEqual("Sandlesandles", Bandnamegenerator.BandNameGenerator("sandles"));
-            Assert.AreEqual("The Bed", Bandnamegenerator.BandNameGenerator("bed"));
-            Assert.AreEqual("The Brother-in-law", Bandnamegenerator.BandNameGenerator("brother-in-law"));
+            Assert.AreEqual(expected, Bandnamegenerator.BandNameGenerator(input));
         }
     }
 }

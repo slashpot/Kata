@@ -18,7 +18,7 @@ namespace Kata
 
         private static string ToTitleCase(string str)
         {
-            return Char.ToUpper(str[0]) + str.Substring(1);
+            return char.ToUpper(str[0]) + str.Substring(1);
         }
     }
 }
