@@ -18,6 +18,14 @@ namespace Kata
             return _numsOfTwoSum;
         }
 
+        private void Initialize(int[] nums, int target)
+        {
+            _target = target;
+            _numsOfInput = nums;
+            _numsOfTwoSum = new int[2];
+            _recordsOfSearchedNums = new Dictionary<int, int>();
+        }
+
         private void SearchNumsOfTwoSum()
         {
             for (int i = 0; i < _numsOfInput.Length; i++)
@@ -38,6 +46,17 @@ namespace Kata
             _candidate = _target - _current;
         }
 
+        private bool ContainsCandidateInRecords()
+        {
+            return _recordsOfSearchedNums.ContainsKey(_candidate);
+        }
+
+        private void SetNumsOfTwoSum(int i)
+        {
+            _numsOfTwoSum[0] = _recordsOfSearchedNums[_candidate];
+            _numsOfTwoSum[1] = i;
+        }
+
         private void AddCurrentInRecordsIfNotExists(int i)
         {
             if (HasNoCurrentInRecords(_current))
@@ -47,25 +66,6 @@ namespace Kata
         private bool HasNoCurrentInRecords(int current)
         {
             return !_recordsOfSearchedNums.ContainsKey(current);
-        }
-
-        private void  SetNumsOfTwoSum(int i)
-        {
-            _numsOfTwoSum[0] = _recordsOfSearchedNums[_candidate];
-            _numsOfTwoSum[1] = i;
-        }
-
-        private bool ContainsCandidateInRecords()
-        {
-            return _recordsOfSearchedNums.ContainsKey(_candidate);
-        }
-
-        private void Initialize(int[] nums, int target)
-        {
-            _target = target;
-            _numsOfInput = nums;
-            _numsOfTwoSum = new int[2];
-            _recordsOfSearchedNums = new Dictionary<int, int>();
         }
     }
 }
