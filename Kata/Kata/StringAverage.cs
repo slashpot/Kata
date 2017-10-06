@@ -43,7 +43,8 @@ namespace Kata
 
         private static int GetNumber(string input)
         {
-            if (Enum.TryParse(input, out WordTable table))
+            WordTable table;
+            if (Enum.TryParse(input, out table))
                 return (int)table;
 
             return -1;
