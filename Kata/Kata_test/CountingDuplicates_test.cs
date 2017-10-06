@@ -15,7 +15,7 @@ namespace Kata_test
         [TestCase(2, "aabBcde")]
         [TestCase(1, "Indivisibility")]
         [TestCase(2, "Indivisibilities")]
-        public void TestCase1(int excepted, string inputString)
+        public void TestCountingDuplicates(int excepted, string inputString)
         {
             var actual = CountingDuplicates.DuplicateCount(inputString);
             Assert.AreEqual(excepted, actual);
