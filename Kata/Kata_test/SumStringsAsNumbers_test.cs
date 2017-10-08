@@ -10,7 +10,8 @@ namespace Kata_test
         [Test]
         public void TestMethod1()
         {
-            Assert.AreEqual("579", SumStringsAsNumbers.sumStrings("123", "456"));
+            var sumStringsAsNumbers = new SumStringsAsNumbers();
+            Assert.AreEqual("579", sumStringsAsNumbers.sumStrings("123", "456"));
         }
     }
 }
