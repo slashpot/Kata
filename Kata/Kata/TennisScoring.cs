@@ -5,9 +5,9 @@ namespace Kata
     public class TennisScoring
     {
         private int eric = 0;
-        private int joey = 0;
+        private int _joey = 0;
 
-        private Dictionary<int, string> scoreLookUp = new Dictionary<int, string>()
+        private readonly Dictionary<int, string> _scoreLookUp = new Dictionary<int, string>()
         {
             {0, "Love" },
             {1, "Fifteen" },
@@ -17,13 +17,13 @@ namespace Kata
 
         public string GetStatue()
         {
-            if (eric == joey)
+            if (eric == _joey)
             {
-                return scoreLookUp[eric] + " All";
+                return _scoreLookUp[eric] + " All";
             }
             else
             {
-                return scoreLookUp[eric] + " " + scoreLookUp[joey];
+                return _scoreLookUp[eric] + " " + _scoreLookUp[_joey];
             }
         }
 
@@ -34,7 +34,7 @@ namespace Kata
 
         public void JoeyGetPoint()
         {
-            joey++;
+            _joey++;
         }
     }
 }

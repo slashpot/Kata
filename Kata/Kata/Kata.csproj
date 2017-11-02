@@ -43,6 +43,7 @@
     <Compile Include="CountingDuplicates.cs" />
     <Compile Include="DeadAnts.cs" />
     <Compile Include="NextBiggerNumberWithTheSameDigits.cs" />
+    <Compile Include="Playground.cs" />
     <Compile Include="StringAverage.cs" />
     <Compile Include="SumStringsAsNumbers.cs" />
     <Compile Include="TennisScoring.cs" />

@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Kata_test
 {
     [TestFixture]
-    public class TennisScoring_test
+    public class TennisScoringTest
     {
         [Test]
         public void GetStatus_Beginning_ReturnLoveAll()
@@ -14,32 +14,23 @@ namespace Kata_test
             Assert.AreEqual("Love All", tennisScoring.GetStatue());
         }
 
-        [Test]
-        public void GetStatus_Eric1_Joey0_ReturnFifteenLove()
+        [TestCase(1, 0, "Fifteen Love")]
+        [TestCase(0, 1, "Love Fifteen")]
+        public void GetStatus_Point_Are_Not_Equal_And_Not_Deuce(int ericPoint, int joeyPoint, string expectedStatus)
         {
-            TennisScoring tennisScoring = new TennisScoring();
-            tennisScoring.EricGetPoint();
-            Assert.AreEqual("Fifteen Love", tennisScoring.GetStatue());
+            TennisScoringForTest tennisScoring = new TennisScoringForTest();
+            tennisScoring.SetPlayersPoint(ericPoint, joeyPoint);
+            Assert.AreEqual(expectedStatus, tennisScoring.GetStatue());
         }
 
-        [Test]
-        public void GetStatus_Eric0_Joey1_ReturnLoveFifteen()
+        [TestCase(0, 0, "Love All")]
+        [TestCase(1, 1, "Fifteen All")]
+        public void GetStatus_Point_Equal_except_deuce(int ericPoint, int joeyPoint, string expectedStatus)
         {
-            TennisScoring tennisScoring = new TennisScoring();
-            tennisScoring.JoeyGetPoint();
-            Assert.AreEqual("Love Fifteen", tennisScoring.GetStatue());
+            TennisScoringForTest tennisScoring = new TennisScoringForTest();
+            tennisScoring.SetPlayersPoint(ericPoint, joeyPoint);
+            Assert.AreEqual(expectedStatus, tennisScoring.GetStatue()); ;
         }
-
-        [Test]
-        public void GetStatus_Eric1_Joey1_ReturnFifteenAll()
-        {
-            TennisScoring tennisScoring = new TennisScoring();
-            tennisScoring.JoeyGetPoint();
-            tennisScoring.EricGetPoint();
-            Assert.AreEqual("Fifteen All", tennisScoring.GetStatue());
-        }
-
-
     }
 
 }
