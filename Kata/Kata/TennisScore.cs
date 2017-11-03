@@ -4,7 +4,7 @@
     {
         public int Score { get; set; }
 
-        public void GetPoint()
+        public void AddScore()
         {
             Score++;
         }

@@ -7,14 +7,6 @@ namespace Kata
         protected readonly TennisScore Eric = new TennisScore();
         protected readonly TennisScore Joey = new TennisScore();
 
-        private enum ScoreStatus
-        {
-            Love = 1,
-            Fifteen,
-            Thirty,
-            Forty
-        }
-
         private readonly Dictionary<int, string> _scoreLookUp = new Dictionary<int, string>()
         {
             {0, "Love" },
@@ -25,32 +17,43 @@ namespace Kata
 
         public string GetStatue()
         {
-            if (IsDeuce())
+            if (IsEqual())
             {
-                return "Deuce";
+                return SetEqualStatus();
             }
             else
             {
-                if (IsEqualNotDeuce())
+                if (Eric.Score >= 4 || Joey.Score >= 4)
                 {
-                    return SetEqualNotDeuceStatue();
+                    int difference = Eric.Score - Joey.Score;
+                    switch (difference)
+                    {
+                        case 2:
+                            return "Eric Wins";
+                        case 1:
+                            return "Eric Advance";
+                        case -1:
+                            return "Joey Advance";
+                        case -2:
+                            return "Joey Wins";
+                    }
                 }
+
                 else
                 {
-                    if (Eric.Score == 4)
-                    {
-                        return "Eric Wins";
-                    }
-                    else if (Joey.Score == 4)
-                    {
-                        return "Joey Wins";
-                    }
-                    else
-                    {
-                        return SetNormalStatus();
-                    }
+                    return SetNormalStatus();
                 }
             }
+        }
+
+        private string SetEqualStatus()
+        {
+            return IsDeuce() ? "Deuce" : _scoreLookUp[Eric.Score] + " All";
+        }
+
+        private bool IsEqual()
+        {
+            return Eric.Score == Joey.Score;
         }
 
         private string SetNormalStatus()
@@ -58,19 +61,9 @@ namespace Kata
             return _scoreLookUp[Eric.Score] + " " + _scoreLookUp[Joey.Score];
         }
 
-        private string SetEqualNotDeuceStatue()
-        {
-            return _scoreLookUp[Eric.Score] + " All";
-        }
-
-        private bool IsEqualNotDeuce()
-        {
-            return Eric.Score == Joey.Score;
-        }
-
         private bool IsDeuce()
         {
-            return Eric.Score == 3 && Joey.Score == 3;
+            return Eric.Score == Joey.Score && Eric.Score >= 3;
         }
     }
 }

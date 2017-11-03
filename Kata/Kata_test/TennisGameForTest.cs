@@ -8,12 +8,12 @@ namespace Kata_test
         {
             for (var i = 0; i < ericPoint; i++)
             {
-                Eric.GetPoint();
+                Eric.AddScore();
             }
 
             for (var i = 0; i < joeyPoint; i++)
             {
-                Joey.GetPoint();
+                Joey.AddScore();
             }
         }
     }
