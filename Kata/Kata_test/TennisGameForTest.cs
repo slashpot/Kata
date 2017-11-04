@@ -6,15 +6,8 @@ namespace Kata_test
     {
         public void SetPlayersPoint(int ericPoint, int joeyPoint)
         {
-            for (var i = 0; i < ericPoint; i++)
-            {
-                Eric.AddScore();
-            }
-
-            for (var i = 0; i < joeyPoint; i++)
-            {
-                Joey.AddScore();
-            }
+            Eric.Score = ericPoint;
+            Joey.Score = joeyPoint;
         }
     }
 }

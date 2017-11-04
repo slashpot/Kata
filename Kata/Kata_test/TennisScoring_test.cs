@@ -50,6 +50,17 @@ namespace Kata_test
             tennisScoring.SetPlayersPoint(ericPoint, joeyPoint);
             Assert.AreEqual(expectedStatus, tennisScoring.GetStatue()); ;
         }
+
+        [TestCase(4,5,"Joey Advance")]
+        [TestCase(5,4,"Eric Advance")]
+        [TestCase(6,7,"Joey Advance")]
+        [TestCase(9,8,"Eric Advance")]
+        public void GetStatus_Return_Player_Advance(int ericPoint, int joeyPoint, string expectedStatus)
+        {
+            var tennisScoring = new TennisGameForTest();
+            tennisScoring.SetPlayersPoint(ericPoint, joeyPoint);
+            Assert.AreEqual(expectedStatus, tennisScoring.GetStatue()); ;
+        }
     }
 
 }

@@ -23,27 +23,43 @@ namespace Kata
             }
             else
             {
-                if (Eric.Score >= 4 || Joey.Score >= 4)
+                if (OnePlayerAdvanceOrWin())
                 {
-                    int difference = Eric.Score - Joey.Score;
-                    switch (difference)
+                    string player = GetAdvanceOrWinningPlayer();
+                    string currentStatus;
+
+                    if (Eric.Score - Joey.Score >= 2)
                     {
-                        case 2:
-                            return "Eric Wins";
-                        case 1:
-                            return "Eric Advance";
-                        case -1:
-                            return "Joey Advance";
-                        case -2:
-                            return "Joey Wins";
+                        return player + " Wins";
+                    }
+                    else if (Eric.Score - Joey.Score == 1)
+                    {
+                        return "Eric Advance";
+                    }
+                    else if (Eric.Score - Joey.Score == -1)
+                    {
+                        return "Joey Advance";
+                    }
+                    else
+                    {
+                        return "Joey Wins";
                     }
                 }
-
                 else
                 {
                     return SetNormalStatus();
                 }
             }
+        }
+
+        private string GetAdvanceOrWinningPlayer()
+        {
+            return Eric.Score - Joey.Score > 0 ? "Eric" : "Joey";
+        }
+
+        private bool OnePlayerAdvanceOrWin()
+        {
+            return Eric.Score >= 4 || Joey.Score >= 4;
         }
 
         private string SetEqualStatus()
