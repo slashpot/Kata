@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Kata
 {
@@ -6,50 +7,26 @@ namespace Kata
     {
         protected readonly TennisScore Eric = new TennisScore();
         protected readonly TennisScore Joey = new TennisScore();
-
-        private readonly Dictionary<int, string> _scoreLookUp = new Dictionary<int, string>()
-        {
-            {0, "Love" },
-            {1, "Fifteen" },
-            {2, "Thirty" },
-            {3, "Forty" },
-        };
+        private readonly ScoreLookup _scoreLookup = new ScoreLookup();
 
         public string GetStatue()
         {
-            if (IsEqual())
-            {
-                return SetEqualStatus();
-            }
-            else
-            {
-                if (OnePlayerAdvanceOrWin())
-                {
-                    string player = GetAdvanceOrWinningPlayer();
-                    string currentStatus;
+            return IsEqual()
+                ? SetEqualStatus()
+                : (OnePlayerAdvanceOrWin() ? SetAdvanceOrWinStatus() : SetNormalStatus());
+        }
 
-                    if (Eric.Score - Joey.Score >= 2)
-                    {
-                        return player + " Wins";
-                    }
-                    else if (Eric.Score - Joey.Score == 1)
-                    {
-                        return "Eric Advance";
-                    }
-                    else if (Eric.Score - Joey.Score == -1)
-                    {
-                        return "Joey Advance";
-                    }
-                    else
-                    {
-                        return "Joey Wins";
-                    }
-                }
-                else
-                {
-                    return SetNormalStatus();
-                }
-            }
+        private string SetAdvanceOrWinStatus()
+        {
+            var player = GetAdvanceOrWinningPlayer();
+            var currentStatus = GetAdvanceOrWinningStatus();
+            return player + currentStatus;
+        }
+
+        private string GetAdvanceOrWinningStatus()
+        {
+            var different = Math.Abs(Eric.Score - Joey.Score);
+            return different >= 2 ? " Wins" : " Advance";
         }
 
         private string GetAdvanceOrWinningPlayer()
@@ -64,7 +41,7 @@ namespace Kata
 
         private string SetEqualStatus()
         {
-            return IsDeuce() ? "Deuce" : _scoreLookUp[Eric.Score] + " All";
+            return IsDeuce() ? "Deuce" : _scoreLookup.GetScore(Eric.Score) + " All";
         }
 
         private bool IsEqual()
@@ -74,7 +51,7 @@ namespace Kata
 
         private string SetNormalStatus()
         {
-            return _scoreLookUp[Eric.Score] + " " + _scoreLookUp[Joey.Score];
+            return _scoreLookup.GetScore(Eric.Score) + " " + _scoreLookup.GetScore(Joey.Score);
         }
 
         private bool IsDeuce()

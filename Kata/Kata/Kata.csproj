@@ -44,6 +44,7 @@
     <Compile Include="DeadAnts.cs" />
     <Compile Include="NextBiggerNumberWithTheSameDigits.cs" />
     <Compile Include="Playground.cs" />
+    <Compile Include="ScoreLookup.cs" />
     <Compile Include="StringAverage.cs" />
     <Compile Include="SumStringsAsNumbers.cs" />
     <Compile Include="TennisScore.cs" />
