@@ -5,11 +5,21 @@
         public string SumStrings(string firstInput, string secondInput)
         {
             var sum = "";
-            for (int i = firstInput.Length - 1; i >= 0; i--)
+            while (firstInput.Length != 0 && secondInput.Length != 0)
             {
-                var firstNum = GetNumberFromChar(firstInput[i]);
-                var secondNum = GetNumberFromChar(secondInput[i]);
+                var firstNum = GetNumberFromChar(firstInput[firstInput.Length - 1]);
+                var secondNum = GetNumberFromChar(secondInput[secondInput.Length - 1]);
                 sum = sum.Insert(0, (firstNum + secondNum).ToString());
+                firstInput = firstInput.Substring(0, firstInput.Length - 1);
+                secondInput = secondInput.Substring(0, secondInput.Length - 1);
+            }
+            if (firstInput.Length != 0)
+            {
+                sum = sum.Insert(0, firstInput);
+            }
+            if (secondInput.Length != 0)
+            {
+                sum = sum.Insert(0, secondInput);
             }
             return sum;
         }

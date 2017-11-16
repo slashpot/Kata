@@ -10,7 +10,15 @@ namespace Kata_test
         [TestCase("0", "1", "1")]
         [TestCase("1", "2", "3")]
         [TestCase("12", "34", "46")]
-        public void SumString_InputsAreSameDigitWithoutCarry_ReturnSum(string firstInput, string secondInput, string sum)
+        [TestCase("123", "345", "468")]
+        public void SumString_InputsAreSameDigitsWithoutCarry_ReturnSum(string firstInput, string secondInput, string sum)
+        {
+            var sumStringsAsNumbers = new SumStringsAsNumbers();
+            Assert.AreEqual(sum, sumStringsAsNumbers.SumStrings(firstInput, secondInput));
+        }
+
+        [TestCase("1", "23", "24")]
+        public void SumString_InputsAreDifferentDigitsWithoutCarry_ReturnSum(string firstInput, string secondInput, string sum)
         {
             var sumStringsAsNumbers = new SumStringsAsNumbers();
             Assert.AreEqual(sum, sumStringsAsNumbers.SumStrings(firstInput, secondInput));
