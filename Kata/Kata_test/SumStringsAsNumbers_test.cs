@@ -35,5 +35,11 @@ namespace Kata_test
         {
             Assert.AreEqual(sum, SumStringsAsNumbers.SumStrings(firstInput, secondInput));
         }
+
+        [TestCase("00863", "0841", "1704")]
+        public void SumString_With0AtHeadOfInput(string firstInput, string secondInput, string sum)
+        {
+            Assert.AreEqual(sum, SumStringsAsNumbers.SumStrings(firstInput, secondInput));
+        }
     }
 }

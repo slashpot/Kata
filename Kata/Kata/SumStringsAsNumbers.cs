@@ -13,6 +13,10 @@
             _firstInput = firstInput;
             Calculate();
             CalculateSumIfInputHasUncheckedDigit();
+            while (_sum[0] == '0' && _sum.Length > 1)
+            {
+                _sum = _sum.Substring(1, _sum.Length - 1);
+            }
             return _sum;
         }
 
@@ -20,8 +24,6 @@
         {
             _hasCarry = false;
             _sum = "";
-            _firstInput = "";
-            _secondInput = "";
         }
 
         private static void Calculate()
