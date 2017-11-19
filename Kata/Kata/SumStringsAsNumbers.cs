@@ -13,11 +13,16 @@
             _firstInput = firstInput;
             Calculate();
             CalculateSumIfInputHasUncheckedDigit();
+            Remove0AtHeadOfSum();
+            return _sum;
+        }
+
+        private static void Remove0AtHeadOfSum()
+        {
             while (_sum[0] == '0' && _sum.Length > 1)
             {
                 _sum = _sum.Substring(1, _sum.Length - 1);
             }
-            return _sum;
         }
 
         public static void Initialize()
@@ -75,16 +80,28 @@
             {
                 _hasCarry = true;
                 sumOfDigit -= 10;
-                if (_firstInput == "")
-                {
-                    _firstInput = "1";
-                    _hasCarry = false;
-                }
-                else if (_secondInput == "")
-                {
-                    _secondInput = "1";
-                    _hasCarry = false;
-                }
+                AddCarryAtHeadIfExist();
+            }
+        }
+
+        private static void AddCarryAtHeadIfExist()
+        {
+            if (_firstInput == "" || _secondInput == "")
+            {
+                _hasCarry = false;
+                AddCarryToHeadOfOneInput();
+            }
+        }
+
+        private static void AddCarryToHeadOfOneInput()
+        {
+            if (_firstInput == "")
+            {
+                _firstInput = "1";
+            }
+            else
+            {
+                _secondInput = "1";
             }
         }
 
