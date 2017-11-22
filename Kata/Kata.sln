@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata_test", "Kata_test\Kata_test.csproj", "{1EF7BDFC-382B-49F0-8CFE-DDFBD2847BEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata", "Kata\Kata.csproj", "{62CA34BD-E833-44C7-9863-52603EAD7A3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TennisTest", "TennisTest\TennisTest.csproj", "{0B149B29-8175-46A1-B86E-39DB97AD5EBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tennis", "Tennis\Tennis.csproj", "{1B8F3184-8977-4FCD-BA85-35177D06EC5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +25,19 @@ Global
 		{62CA34BD-E833-44C7-9863-52603EAD7A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62CA34BD-E833-44C7-9863-52603EAD7A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62CA34BD-E833-44C7-9863-52603EAD7A3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B149B29-8175-46A1-B86E-39DB97AD5EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B149B29-8175-46A1-B86E-39DB97AD5EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B149B29-8175-46A1-B86E-39DB97AD5EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B149B29-8175-46A1-B86E-39DB97AD5EBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B8F3184-8977-4FCD-BA85-35177D06EC5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B8F3184-8977-4FCD-BA85-35177D06EC5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B8F3184-8977-4FCD-BA85-35177D06EC5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B8F3184-8977-4FCD-BA85-35177D06EC5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8DB1FECD-1BB2-4A30-8743-DEE13F4EB035}
 	EndGlobalSection
 EndGlobal

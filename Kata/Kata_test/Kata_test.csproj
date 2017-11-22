@@ -73,8 +73,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NextBiggerNumberWithTheSameDigits_test.cs" />
     <Compile Include="SumStringsAsNumbers_test.cs" />
-    <Compile Include="TennisGameForTest.cs" />
-    <Compile Include="TennisScoring_test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kata\Kata.csproj">
