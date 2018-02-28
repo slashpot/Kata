@@ -1,22 +1,38 @@
 ﻿using System;
-using System.Collections;
 using System.Text;
 
 namespace Codewars
 {
+    //http://www.codewars.com/kata/next-smaller-number-with-the-same-digits/train/csharp
+
     public class NextSmallerDigit
     {
         public long NextSmaller(long n)
         {
-            if (HasOneDigit(n)) return -1;
+            long nextSmallerDigit = -1;
+            if (HasOneDigit(n)) return nextSmallerDigit;
 
             var input = new StringBuilder(n.ToString());
+            SwapDigits(ref input);
+            SaveIfHeadIsNot0(input, ref nextSmallerDigit);
+            return nextSmallerDigit;
+        }
+
+        private void SwapDigits(ref StringBuilder input)
+        {
             var isSwaped = SwapNumIfHasSmallerValue(input);
             if (!isSwaped)
             {
                 SwapFirstDigitWithNextSmallerNum(ref input);
             }
-            return Convert.ToInt64(input.ToString());
+        }
+
+        private void SaveIfHeadIsNot0(StringBuilder input, ref long nextSmallerDigit)
+        {
+            if (input[0] != '0')
+            {
+                nextSmallerDigit = Convert.ToInt64(input.ToString());
+            }
         }
 
         private bool SwapNumIfHasSmallerValue(StringBuilder input)
@@ -28,8 +44,9 @@ namespace Codewars
             {
                 if (input[checkedIndex] < input[checkedIndex - 1])
                 {
-                    SwapDigit(input, checkedIndex, checkedIndex - 1);
+                    Swap(input, checkedIndex, checkedIndex - 1);
                     isSwaped = true;
+                    break;
                 }
                 checkedIndex--;
             }
@@ -48,7 +65,7 @@ namespace Codewars
             {
                 if (input[i] < input[0])
                 {
-                    SwapDigit(input, i, 0);
+                    Swap(input, i, 0);
                     break;
                 }
             }
@@ -59,7 +76,7 @@ namespace Codewars
             return input.ToString().Substring(1).ToCharArray();
         }
 
-        private void SwapDigit(StringBuilder newInput, int i, int j)
+        private void Swap(StringBuilder newInput, int i, int j)
         {
             var temp = newInput[i];
             newInput[i] = newInput[j];
