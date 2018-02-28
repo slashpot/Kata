@@ -75,8 +75,13 @@
     <Compile Include="SumStringsAsNumbers_test.cs" />
     <Compile Include="TennisGameForTest.cs" />
     <Compile Include="TennisScoring_test.cs" />
+    <Compile Include="NextSmallerDigitTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Codewars\Codewars.csproj">
+      <Project>{c6a91fc9-ba57-4adf-9f37-325474372d55}</Project>
+      <Name>Codewars</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kata\Kata.csproj">
       <Project>{62ca34bd-e833-44c7-9863-52603ead7a3a}</Project>
       <Name>Kata</Name>
