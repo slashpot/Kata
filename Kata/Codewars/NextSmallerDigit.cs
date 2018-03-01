@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Text;
+using System.Linq;
 
 namespace Codewars
 {
@@ -10,82 +10,63 @@ namespace Codewars
         public long NextSmaller(long n)
         {
             long nextSmallerDigit = -1;
-            if (HasOneDigit(n)) return nextSmallerDigit;
+            var nums = n.ToString().ToCharArray();
 
-            var input = new StringBuilder(n.ToString());
-            SwapDigits(ref input);
-            SaveIfHeadIsNot0(input, ref nextSmallerDigit);
+            if (HasOneDigit(n) || HasNoSmallerDigits(nums))
+                return nextSmallerDigit;
+
+            SwapDigits(ref nums);
+            SaveIfHeadIsNot0(ref nums, ref nextSmallerDigit);
+
             return nextSmallerDigit;
-        }
-
-        private void SwapDigits(ref StringBuilder input)
-        {
-            var isSwaped = SwapNumIfHasSmallerValue(input);
-            if (!isSwaped)
-            {
-                SwapFirstDigitWithNextSmallerNum(ref input);
-            }
-        }
-
-        private void SaveIfHeadIsNot0(StringBuilder input, ref long nextSmallerDigit)
-        {
-            if (input[0] != '0')
-            {
-                nextSmallerDigit = Convert.ToInt64(input.ToString());
-            }
-        }
-
-        private bool SwapNumIfHasSmallerValue(StringBuilder input)
-        {
-            var checkedIndex = input.Length - 1;
-            var isSwaped = false;
-
-            while (checkedIndex > 1)
-            {
-                if (input[checkedIndex] < input[checkedIndex - 1])
-                {
-                    Swap(input, checkedIndex, checkedIndex - 1);
-                    isSwaped = true;
-                    break;
-                }
-                checkedIndex--;
-            }
-            return isSwaped;
-        }
-
-        private void SwapFirstDigitWithNextSmallerNum(ref StringBuilder input)
-        {
-            var restNums = GetSubstringArray(input);
-
-            Array.Sort(restNums);
-            Array.Reverse(restNums);
-
-            input = new StringBuilder(input[0] + string.Join("", restNums));
-            for (int i = 1; i < input.Length; i++)
-            {
-                if (input[i] < input[0])
-                {
-                    Swap(input, i, 0);
-                    break;
-                }
-            }
-        }
-
-        private char[] GetSubstringArray(StringBuilder input)
-        {
-            return input.ToString().Substring(1).ToCharArray();
-        }
-
-        private void Swap(StringBuilder newInput, int i, int j)
-        {
-            var temp = newInput[i];
-            newInput[i] = newInput[j];
-            newInput[j] = temp;
         }
 
         private bool HasOneDigit(long input)
         {
             return input.ToString().Length == 1;
+        }
+
+        private bool HasNoSmallerDigits(char[] nums)
+        {
+            var sorted = nums.OrderBy(x => x);
+            return nums.SequenceEqual(sorted);
+        }
+
+        private void SwapDigits(ref char[] nums)
+        {
+            for (int i = nums.Length - 2; i >= 0; i--)
+            {
+                ReverseSortFromNextIndex(nums, i);
+                for (int j = i + 1; j < nums.Length; j++)
+                {
+                    if (nums[i] > nums[j])
+                    {
+                        Swap(nums, i, j);
+                        return;
+                    }
+                }
+            }
+        }
+
+        private static void ReverseSortFromNextIndex(char[] nums, int i)
+        {
+            Array.Sort(nums, i + 1, nums.Length - (i + 1));
+            Array.Reverse(nums, i + 1, nums.Length - (i + 1));
+        }
+
+        private void Swap(char[] nums, int i, int j)
+        {
+            var temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+        }
+
+        private void SaveIfHeadIsNot0(ref char[] nums, ref long nextSmallerDigit)
+        {
+            if (nums[0] != '0')
+            {
+                nextSmallerDigit = Convert.ToInt64(string.Join("", nums));
+            }
         }
     }
 }
