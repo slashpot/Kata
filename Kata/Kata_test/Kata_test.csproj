@@ -66,6 +66,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AnagramDetectionTest.cs" />
     <Compile Include="Bandnamegenerator_test.cs" />
     <Compile Include="CountingDuplicates_test.cs" />
     <Compile Include="DeadAnts_test.cs" />
