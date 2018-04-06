@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="AnagramDetectionTest.cs" />
     <Compile Include="Bandnamegenerator_test.cs" />
+    <Compile Include="CarParkEscapeTest.cs" />
     <Compile Include="CountingDuplicates_test.cs" />
     <Compile Include="DeadAnts_test.cs" />
     <Compile Include="StringAverage_test.cs" />
