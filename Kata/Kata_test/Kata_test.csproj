@@ -80,6 +80,7 @@
     <Compile Include="SumStringsAsNumbers_test.cs" />
     <Compile Include="NextSmallerDigitTest.cs" />
     <Compile Include="SortTheOddTest.cs" />
+    <Compile Include="ExeAndOhs_test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Codewars\Codewars.csproj">

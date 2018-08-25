@@ -2,7 +2,7 @@
 
 namespace Codewars
 {
-    internal class ExeAndOhs
+    public class ExeAndOhs
     {
         public static bool XO(string input)
         {
