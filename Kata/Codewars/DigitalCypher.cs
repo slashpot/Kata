@@ -1,22 +1,43 @@
-﻿namespace Codewars
+﻿using System.Collections.Generic;
+
+namespace Codewars
 {
     public class DigitalCypher
     {
         public static int[] Encode(string str, int n)
         {
-            var nums = new int[str.Length];
-            for (int i = 0; i < str.Length; i++)
-            {
-                nums[i] = str[i] - 96 + GetKeyValue(i, n);
-            }
+            var nums = InitialResult(str);
+            Calculate(str, n, nums);
             return nums;
         }
 
-        private static int GetKeyValue(int index, int key)
+        private static int[] InitialResult(string str)
         {
-            var keyString = key.ToString();
-            var keyIndex = index % keyString.Length;
-            return keyString[keyIndex]-48;
+            return new int[str.Length];
+        }
+
+        private static void Calculate(string str, int n, IList<int> nums)
+        {
+            for (var i = 0; i < str.Length; i++)
+            {
+                nums[i] = GetNumOfAlphabet(str[i]) + GetKeyValue(i, n.ToString());
+            }
+        }
+
+        private static int GetNumOfAlphabet(char digit)
+        {
+            return digit - 96;
+        }
+
+        private static int GetKeyValue(int index, string key)
+        {
+            var keyIndex = index % key.Length;
+            return GetNumOfChar(key[keyIndex]);
+        }
+
+        private static int GetNumOfChar(char digit)
+        {
+            return digit - 48;
         }
     }
 }
