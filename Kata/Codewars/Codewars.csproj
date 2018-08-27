@@ -45,6 +45,7 @@
     <Compile Include="CarParkEscape.cs" />
     <Compile Include="DigitalCypher.cs" />
     <Compile Include="ExeAndOhs.cs" />
+    <Compile Include="MaxDiffLength.cs" />
     <Compile Include="NextSmallerDigit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortTheOdd.cs" />
